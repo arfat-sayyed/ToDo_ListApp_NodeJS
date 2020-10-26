@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/todo.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title><%= title %></title>
+</head>
+<body>
+    
+    <h1 class="heading">To<span class="heading-span">Do</span> <span class="heading-list">List</span></h1>
+
+    <hr class="hr-style">
+
+    <div class="main-todo-box">
+
+        <form action="/create-task" method="POST">
+            <div class="Main-Task">
+            <i class="fa fa-tasks fa-red" aria-hidden="true"></i>
+            <!-- <label class="label-style">Description</label> -->
+            <input type="text" class="form-input" name="taskname" placeholder="Enter Your Task For ToDo List">
+            </div>
+            <hr>
+            <div class="Main-Task">
+                <i class="fa fa-tags fa-red" aria-hidden="true"></i>
+                <!-- <label class="label-style">Category</label> -->
+                <select id="cars" class="form-input" name="category">
+                    <option value="personal">Personal</option>
+                    <option value="work">Work</option>
+                    <option value="school">School</option>
+                    <option value="cleaning">Cleaning</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <i class="fa fa-calendar fa-red" aria-hidden="true"></i>
+                <!-- <label class="label-style">Date</label> -->
+                <input type="date" class="form-input" name="taskdate" placeholder="Select Date">
+            </div>
+
+            
+
+            <div class="Main-Task">
+                
+            <button type="submit" style="margin-right: 20px;" class="btn-form-1"><i class="fa fa-plus fa-red fa-left-style" aria-hidden="true"></i>Add Task</button>
+
+            </div>
+
+        </form>
+
+            <hr>
+
+        <h1 class="heading-1">Todo <span class="heading-span">Task</span> List</h1>
+
+        <div class="main-task">
+            <ul>
+                <% for (let i of todo_tasks){ %>
+    
+                    <li class="every-li">
+                        <p class="p-class-name"><%= i.taskname %></p>
+                        <div class="p-inner-task">
+                            <i class="fa fa-calendar fa-red" aria-hidden="true"></i>
+                            <p class="p-date"><%= i.taskdate.toDateString()%></p>
+                            <i class="fa fa-hashtag fa-red" aria-hidden="true"></i>
+                            <p class="p-category"><%= i.category.toUpperCase(); %></p>
+
+                            <div class="p-btn">
+                                <a href="/delete-contact/?id=<%= i._id %>">
+                                    <i class="fa fa-trash fa-red" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            
+                        </div>
+                        
+                        <!-- <div>
+                            <a href="/delete-contact/?id=<%= i._id %>">
+                                <p>X</p>
+                            </a>
+                        </div> -->
+                    </li>
+    
+                <%}%>
+            </ul>
+        </div>
+
+        
+        
+    </div>
+    
+
+
+
+    <script type="text/javascript" src="todo.js"></script>
+</body>
+</html>
