@@ -9,11 +9,11 @@ const app = express();
 
 app.use(express.urlencoded());
 app.use(express.static('assets'));
-
+// EJS Engine Set
 app.set('view engine','ejs');
 app.set('views', './views');
 
-
+// This Is Variable Where Actual ToDo Task Is Stored For Storing Data Base
 var TodoList = [
     {
         taskname:"",
@@ -22,6 +22,7 @@ var TodoList = [
     }
 ];
 
+// Here Website Main Page Loads
 app.get('/',function(req,res){
 
     ToDoTask.find({}, function(err, tasks){
@@ -39,7 +40,7 @@ app.get('/',function(req,res){
 });
 
 
-
+// Here New task is Created For Storing In DB
 app.post('/create-task', function(req,res){
     // console.log(req.body.name);
     // console.log(req.body.phone);
@@ -64,6 +65,7 @@ app.post('/create-task', function(req,res){
 
 });
 
+// Here Selected Task Is Deleted For Removing From DB
 app.get('/delete-contact', function(req,res){
 
     let id = req.query.id;
@@ -80,6 +82,7 @@ app.get('/delete-contact', function(req,res){
 });
 
 
+// Server Starts After This Code Execution
 
 app.listen(port,function(err){
     if(err){

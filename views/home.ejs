@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Personal CSS File Attached Below -->
     <link rel="stylesheet" href="css/todo.css">
+    <!-- FA Icon CDN Link Attached Below -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title><%= title %></title>
 </head>
 <body>
-    
+    <!-- Add Task Block Coding Start -->
     <h1 class="heading">To<span class="heading-span">Do</span> <span class="heading-list">List</span></h1>
 
     <hr class="hr-style">
@@ -26,6 +28,7 @@
                 <i class="fa fa-tags fa-red" aria-hidden="true"></i>
                 <!-- <label class="label-style">Category</label> -->
                 <select id="cars" class="form-input" name="category">
+                    <option value="" disabled selected>Select Category</option>
                     <option value="personal">Personal</option>
                     <option value="work">Work</option>
                     <option value="school">School</option>
@@ -48,48 +51,43 @@
 
         </form>
 
-            <hr>
+        <!-- Add Task Code Block End Here -->
 
+            <hr>
+        <!-- List Of Added Task List Display Below -->
         <h1 class="heading-1">Todo <span class="heading-span">Task</span> List</h1>
 
         <div class="main-task">
             <ul>
                 <% for (let i of todo_tasks){ %>
     
-                    <li class="every-li">
+                    <li class="every-li" id="S-Task" onclick="">
                         <p class="p-class-name"><%= i.taskname %></p>
                         <div class="p-inner-task">
                             <i class="fa fa-calendar fa-red" aria-hidden="true"></i>
                             <p class="p-date"><%= i.taskdate.toDateString()%></p>
                             <i class="fa fa-hashtag fa-red" aria-hidden="true"></i>
                             <p class="p-category"><%= i.category.toUpperCase(); %></p>
-
+                            <!-- Delete Task Code Start Here -->
                             <div class="p-btn">
                                 <a href="/delete-contact/?id=<%= i._id %>">
-                                    <i class="fa fa-trash fa-red" aria-hidden="true"></i>
+                                    <abbr title="Delete Task"><i class="fa fa-trash fa-red" aria-hidden="true"></i></abbr>
+                                
                                 </a>
                             </div>
                             
                         </div>
                         
-                        <!-- <div>
-                            <a href="/delete-contact/?id=<%= i._id %>">
-                                <p>X</p>
-                            </a>
-                        </div> -->
                     </li>
     
                 <%}%>
             </ul>
         </div>
+</div>
 
-        
-        
-    </div>
-    
+<!-- Display Task Block Code End -->
 
-
-
-    <script type="text/javascript" src="todo.js"></script>
+<!-- Personal Javascript File Attached Below -->
+    <script src="js/todo.js"></script>
 </body>
 </html>
